@@ -1,0 +1,11 @@
+<?php
+	function getConfig() {
+		return array(
+			"zip-name" => $_SESSION['project']+"/submit_src.tar" ,
+			"upload-webservice" => "https://10.0.0.1:3444/api/submit",
+			"reset-webservice" => "https://10.0.0.1:3444/api/reset",
+			"pid" => "pid1",
+			"token" => "P3R42L2982U3EF4W773K8Y91592JGZS4",
+		);
+	}
+?>
