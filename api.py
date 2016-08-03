@@ -307,12 +307,13 @@ def proxy_handler(token,file=""):
       return "{\"status\":0,\"message\":\"Invalid token.\"}"
     ip = ips[token]
     request_headers = {}
-    for h in ["Cookie", "Referer", "X-Csrf-Token","Content-Type"]:
-        if h in request.headers:
-            request_headers[h] = request.headers[h]
+#    for h in ["Cookie", "Referer", "X-Csrf-Token","Content-Type"]:
+#        if h in request.headers:
+#            request_headers[h] = request.headers[h]
 #    for h in request.headers:
-    #for key, value in request.headers.to_list():
-    #  request_headers[key] = value # request.headers[h]
+    for key, value in request.headers.to_list():
+     if key not in ["Host"]:
+      request_headers[key] = value # request.headers[h]
     if request.query_string:
         path = "/%s?%s" % (file, request.query_string)
     else:
