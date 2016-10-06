@@ -1,8 +1,0 @@
-      lxc-start 20160725155502.297 ERROR    lxc_conf - conf.c:mount_entry:1650 - No such file or directory - failed to mount '/home/ctf/lxcapi/mnt/A072RFREPA27FG2DEB9WXJT1BAP8CO65/' on '/usr/lib/x86_64-linux-gnu/lxc/home/usr/src'
-      lxc-start 20160725155502.297 ERROR    lxc_conf - conf.c:lxc_setup:3731 - failed to setup the mount entries for 'A072RFREPA27FG2DEB9WXJT1BAP8CO65'
-      lxc-start 20160725155502.297 ERROR    lxc_start - start.c:do_start:833 - failed to setup the container
-      lxc-start 20160725155502.297 ERROR    lxc_sync - sync.c:__sync_wait:57 - An error occurred in another process (expected sequence number 3)
-      lxc-start 20160725155502.297 ERROR    lxc_start - start.c:__lxc_start:1353 - failed to spawn 'A072RFREPA27FG2DEB9WXJT1BAP8CO65'
-      lxc-start 20160725155507.303 ERROR    lxc_start_ui - lxc_start.c:main:344 - The container failed to start.
-      lxc-start 20160725155507.303 ERROR    lxc_start_ui - lxc_start.c:main:346 - To get more details, run the container in foreground mode.
-      lxc-start 20160725155507.303 ERROR    lxc_start_ui - lxc_start.c:main:348 - Additional information can be obtained by setting the --logfile and --logpriority options.
