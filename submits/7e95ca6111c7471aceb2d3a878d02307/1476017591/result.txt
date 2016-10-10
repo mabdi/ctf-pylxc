@@ -1,0 +1,1 @@
+{"data": {"retval": 1, "stat": 20, "stdio": "b' * Reloading web server apache2\\n * \\n * Apache2 is not running\\n'"}, "msg": "`service apache2 restart` failed.", "stat": 0}

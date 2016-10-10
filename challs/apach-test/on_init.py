@@ -3,6 +3,9 @@ from os.path import join, isfile, exists
 import hashlib
 import json
 from distutils import dir_util
+import pwd
+import grp
+import os
 
 LXC_NAME = "ide"
 MAIN_FOLDER = "/var/www/ide000"
@@ -30,15 +33,31 @@ def make_instance(team,pid,folder,team_folder):
       return 10
    # copy folder
    dir_util.copy_tree(MAIN_FOLDER2, dest2 )
+   # update projects.php
    with open(join(dest,"data","projects.php")) as f:
        jsonstr =f.read()
        jsonstr = jsonstr[8:-5]
        jsonstr = json.loads(jsonstr)   
        jsonstr.append({'path':'apache','name':'apache'})
        jsonstr = json.dumps(jsonstr)
-       
    with open(join(dest,"data","projects.php"), "w") as f:
        f.write( jsonstr )
+   # update components/ctf/config.php   
+   with open(join(dest,"components","ctf","config.php")) as f:
+	   conf = f.read()
+	   conf = conf.replace("PID_JA", pid )
+	   conf = conf.replace("FOLDER_JA", folder )
+   with open(join(dest,"components","ctf","config.php"), "w") as f:
+       f.write( conf )
+   uid = pwd.getpwnam("www-data").pw_uid
+   gid = grp.getgrnam("www-data").gr_gid
+   os.chown(dest, uid, gid)
+   for root, dirs, files in os.walk(dest):  
+     for momo in dirs:  
+         os.chown(os.path.join(root, momo), uid, gid)
+     for momo in files:
+         os.chown(os.path.join(root, momo), uid, gid)
+
    return 11
 
 def init(team,pid,folder):

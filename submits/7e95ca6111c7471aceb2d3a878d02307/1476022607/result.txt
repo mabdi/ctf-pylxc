@@ -1,0 +1,1 @@
+{"msg": "`service apache2 restart` failed.", "data": {"stdio": "b' * Restarting web server apache2\\n   ...fail!\\n * The apache2 configtest failed.\\nOutput of config test was:\\ncat: /tmp/tmp.2Liezu3RNN: No such file or directory\\n'", "retval": 1}, "stat": 10}
