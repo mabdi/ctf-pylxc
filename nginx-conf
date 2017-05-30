@@ -2,7 +2,7 @@
 
         location /api {
               include uwsgi_params;
-              uwsgi_pass unix:/home/user/pylxc/pylxc.sock;
+              uwsgi_pass unix:/home/user/ctf-pylxc/pylxc.sock;
         }
 
 
