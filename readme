@@ -1,0 +1,8 @@
+
+How to setup:
+
+git clone https://github.com/mabdi/ctf-pylxc.git
+sudo apt-get install python3-pip
+pip3 install virtualenv
+
+
