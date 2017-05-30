@@ -28,7 +28,7 @@ def make_instance(team,pid,folder,team_folder):
            newText=newText.replace("BASE_URL_JA", "ctf.behsazan.net/ide" + team_folder )
        with open(join(dest,"config.php"), "w") as f:
            f.write( newText )
-   dest2 = join(dest,'workspace','apache')
+   dest2 = join(dest,'workspace','apache2')
    if exists(dest2):
       return 10
    # copy folder
@@ -38,17 +38,28 @@ def make_instance(team,pid,folder,team_folder):
        jsonstr =f.read()
        jsonstr = jsonstr[8:-5]
        jsonstr = json.loads(jsonstr)   
-       jsonstr.append({'path':'apache','name':'apache'})
+       jsonstr.append({'path':'apache2','name':'apache2'})
        jsonstr = json.dumps(jsonstr)
    with open(join(dest,"data","projects.php"), "w") as f:
-       f.write( jsonstr )
+       f.write( "<?php/*|" + jsonstr + "|*/?>")
    # update components/ctf/config.php   
-   with open(join(dest,"components","ctf","config.php")) as f:
-       conf = f.read()
-       conf = conf.replace("PID_JA", pid )
-       conf = conf.replace("FOLDER_JA", folder )
-   with open(join(dest,"components","ctf","config.php"), "w") as f:
-       f.write( conf )
+   #with open(join(dest,"components","ctf","config.php")) as f:
+   #    conf = f.read()
+   #    conf = conf.replace("PID_JA", pid )
+   #    conf = conf.replace("FOLDER_JA", folder )
+   #with open(join(dest,"components","ctf","config.php"), "w") as f:
+   #    f.write( conf )
+   with open(join(dest,"components","ctf","projects.php")) as f:
+       jsonstr =f.read().strip()
+       jsonstr = jsonstr[8:-5]
+       print("foo",jsonstr)
+       jsonstr = json.loads(jsonstr)   
+       jsonstr.append({'zip-name':"submit_"+pid+".tar",'pid':pid,'folder':folder,'result':pid+'_rsp.txt','project':'apache2'})
+       jsonstr = json.dumps(jsonstr)
+   with open(join(dest,"components","ctf","projects.php"), "w") as f:
+       f.write( "<?php/*|" + jsonstr + "|*/?>")
+   
+
    uid = pwd.getpwnam("www-data").pw_uid
    gid = grp.getgrnam("www-data").gr_gid
    os.chown(dest, uid, gid)

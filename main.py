@@ -15,7 +15,13 @@ ACCESS_TOKEN = "8e39a85022b8c194cb7cc3f7ae3e0217"
 
 CHALLS = {
     "c9c3e050517cecff6c7bbc818d84ced7":"apach-test",
-
+    "c06890c6a5cf80024298730171b29506":"waf",
+	
+	
+	"4b6d4ba6317d03c0202b0286fe5e94aa":"Apache_Man_1",
+	"3d6797f3aa1096b64f2f54609ce2f329":"Apache_Man_2",
+	"7089fee1bb82b14ef441de2a6a73497f":"Apache_Man_3",
+	"2f62165f107b5ea071016cc35e9990b2":"waf_no_negative",
 }
 
 def mk_response(stat,msg,data=None):
@@ -46,11 +52,14 @@ def on_init():
      if not os.path.isfile(path):
         return mk_response(stat = 0,msg ="شماره سوال نامعتبر")    
      try:
+        print(team,pid,folder)
         result = load_py(path).init(team,pid,folder)
         return mk_response(stat =result['stat'],msg =result['msg'], data =result['data'])
      except:
-        print("global Error") 
-
+        print ("global Error") 
+        import traceback
+        print(traceback.format_exc())
+        
         
 @app.route("/api/grade", methods=['POST'])
 def grade_flag(): 
@@ -80,7 +89,9 @@ def grade_flag():
         print('toc',time.time(),result)
         return mk_response(stat =result['stat'],msg =result['msg'], data =result['data'])
      except:
-        print("global Error") 
+        print ("global Error") 
+        import traceback
+        print(traceback.format_exc())
      
 if __name__ == "__main__":
     app.run()
