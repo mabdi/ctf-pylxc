@@ -3,6 +3,14 @@ How to setup:
 
 git clone https://github.com/mabdi/ctf-pylxc.git
 sudo apt-get install python3-pip
-pip3 install virtualenv
+sudo -E pip3 install virtualenv
+cd ctf-pylxc
+virtualenv pylxcenv
+source pylxcenv/bin/activate
+pip3 install uwsgi flask
+deactivate
+sudo mv pylxc.conf /etc/init/pylxc.conf
 
+
+sudo start pylxc
 
