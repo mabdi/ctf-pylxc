@@ -35,6 +35,7 @@ def load_py(path):
 
 @app.route("/api/init", methods=['POST'])
 def on_init():
+     print('on_init')
      access_token = request.form.get('access_token', '').strip()
      folder = request.form.get('folder', '').strip()
      team = request.form.get('team', '').strip()

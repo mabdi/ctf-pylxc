@@ -10,7 +10,8 @@ source pylxcenv/bin/activate
 pip3 install uwsgi flask
 deactivate
 sudo mv pylxc.conf /etc/init/pylxc.conf
-
+sudo mkdir -p /var/log/uwsgi
+sudo chown user:www-data /var/log/uwsgi/
 
 sudo start pylxc
 
