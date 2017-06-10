@@ -11,7 +11,7 @@ import time
 app = Flask(__name__)
 app.debug = True
 
-ACCESS_TOKEN = "8e39a85022b8c194cb7cc3f7ae3e0217"
+ACCESS_TOKEN = open("access_token.txt").read().strip()
 
 CHALLS = {
     "c9c3e050517cecff6c7bbc818d84ced7":"apach-test",
