@@ -12,6 +12,6 @@ deactivate
 sudo mv pylxc.conf /etc/init/pylxc.conf
 sudo mkdir -p /var/log/uwsgi
 sudo chown user:www-data /var/log/uwsgi/
-
+change value in access_token.txt
 sudo start pylxc
 
