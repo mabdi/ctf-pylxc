@@ -40,6 +40,7 @@ def on_init():
      folder = request.form.get('folder', '').strip()
      team = request.form.get('team', '').strip()
      pid = request.form.get('pid', '').strip()
+     print(access_token,ACCESS_TOKEN)
      if not access_token or access_token != ACCESS_TOKEN:
         return mk_response(stat =0, msg = "access_denied")
      if not folder:
